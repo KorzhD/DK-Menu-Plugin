@@ -1,0 +1,12 @@
+name: DK-Menu-Plugin
+version: '1'
+main: org.example.dmytrok.dkmenuplugin.DK_Menu_Plugin
+commands:
+  adminMenu:
+    description: Admin Menu
+    usage: /adminMenu
+    permission: adminMenu.admin
+permissions:
+  adminMenu.admin:
+    description: Only admin can open this menu
+    default: op
