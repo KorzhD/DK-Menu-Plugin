@@ -32,36 +32,67 @@ public class AdminMenuCommand implements CommandExecutor {
 
         Inventory adminMenu = Bukkit.createInventory(player, getRows(5),  "§l§5Admin Menu");
 
+        //Graves
+
         ItemStack graveBreaker = new ItemStack(Material.GOLD_AXE);
         ItemMeta graveBreakerMeta = graveBreaker.getItemMeta();
-        List<String> list = new ArrayList<>();
-        list.add("§4Nightmare of Graveyards....");
+        List<String> gblist = new ArrayList<>();
+        gblist.add("§4Nightmare of Graveyards....");
             graveBreakerMeta.setDisplayName("§c§lGet Grave Breaker");
-            graveBreakerMeta.setLore(list);
+            graveBreakerMeta.setLore(gblist);
             graveBreakerMeta.setUnbreakable(true);
             graveBreaker.setItemMeta(graveBreakerMeta);
 
+        ItemStack superKey = new ItemStack(Material.TOTEM, 1);
+        ItemMeta itemMeta = superKey.getItemMeta();
+        List<String> sklist = new ArrayList<>();
+        sklist.add("§5Can open any grave");
+            itemMeta.setDisplayName("§5Get Super Key");
+            itemMeta.setLore(sklist);
+            itemMeta.setUnbreakable(true);
+            superKey.setItemMeta(itemMeta);
+
+
+        //Graves
+
+        //
+
+        //Magic Wand
+
         ItemStack magicWand = new ItemStack(Material.WOOD_AXE, 1);
         ItemMeta magicWandMeta = magicWand.getItemMeta();
-        List<String> list1 = new ArrayList<>();
-        list.add("§6The most powerful thing in the World!");
+        List<String> mwlist = new ArrayList<>();
+        mwlist.add("§6The most powerful thing in the World!");
         magicWandMeta.setDisplayName("§5§lGet Magic Wand");
-        magicWandMeta.setLore(list1);
+        magicWandMeta.setLore(mwlist);
         magicWandMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, true);
         magicWandMeta.setUnbreakable(true);
         magicWand.setItemMeta(magicWandMeta);
+
+        //Magic Wand
+
+        //
+
+        //Pick Up
 
         ItemStack pickUpOff = new ItemStack(Material.INK_SACK, 1, (short) 1);
         ItemMeta pickUpOffMeta = pickUpOff.getItemMeta();
         pickUpOffMeta.setDisplayName("§aEnable Pick Up Messages");
         pickUpOff.setItemMeta(pickUpOffMeta);
+
         ItemStack pickUpOn = new ItemStack(Material.INK_SACK, 1, (short) 10);
         ItemMeta pickUpOnMeta = pickUpOff.getItemMeta();
         pickUpOnMeta.setDisplayName("§aDisable Pick Up Messages");
         pickUpOn.setItemMeta(pickUpOnMeta);
 
+        //Pick Up
+
+        //
+
+
 
         adminMenu.setItem(0, graveBreaker);
+        adminMenu.setItem(8, superKey);
         adminMenu.setItem(1, magicWand);
 
         String pickUpSetting = AdminMenuEvents.pickUpSetting;

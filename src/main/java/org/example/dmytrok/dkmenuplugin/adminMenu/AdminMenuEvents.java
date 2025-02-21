@@ -48,11 +48,19 @@ public class AdminMenuEvents implements Listener {
             player.closeInventory();
             player.performCommand("getgravebreaker");
         }
+
+        if (clickedItem.getType().equals(Material.TOTEM)
+                && clickedItem.getItemMeta().getDisplayName().equals("§5Get Super Key")) {
+            player.closeInventory();
+            player.performCommand("getsuperkey");
+        }
+
         if (clickedItem.getType().equals(Material.WOOD_AXE)
                 && clickedItem.getItemMeta().getDisplayName().equals("§5§lGet Magic Wand")) {
             player.closeInventory();
             player.performCommand("getmagicwand");
         }
+
         ItemStack redDye = new ItemStack(Material.INK_SACK, 1, (short) 1);
         if (clickedItem.getType().equals(Material.INK_SACK) && clickedItem.getData().equals(redDye.getData())
                 && clickedItem.getItemMeta().getDisplayName().equals("§aEnable Pick Up Messages")) {
@@ -60,6 +68,7 @@ public class AdminMenuEvents implements Listener {
             pickUpSetting = "enable";
             player.performCommand("pickup enable");
         }
+
         ItemStack limeDye = new ItemStack(Material.INK_SACK, 1, (short) 10);
         if (clickedItem.getType().equals(Material.INK_SACK) && clickedItem.getData().equals(limeDye.getData())
                 && clickedItem.getItemMeta().getDisplayName().equals("§aDisable Pick Up Messages")) {
