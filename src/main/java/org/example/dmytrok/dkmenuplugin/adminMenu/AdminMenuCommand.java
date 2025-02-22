@@ -107,17 +107,20 @@ public class AdminMenuCommand implements CommandExecutor {
         goclMeta.setDisplayName("§b§lSummon Guardian of Cold Lands");
         guardianOfColdLands.setItemMeta(goclMeta);
 
-
         ItemStack stick = new ItemStack(Material.STICK);
         ItemMeta stickM = stick.getItemMeta();
         stickM.setDisplayName("§lGet Boss Killer");
         stickM.addEnchant(Enchantment.DAMAGE_ALL, 100, true);
         stick.setItemMeta(stickM);
 
+        ItemStack lastDrop = new ItemStack(Material.CHEST);
+        ItemMeta ldMeta = lastDrop.getItemMeta();
+        ldMeta.setDisplayName("§a§lLast Drop");
+        lastDrop.setItemMeta(ldMeta);
+
         //Entity
 
         //
-
 
 
         adminMenu.setItem(0, graveBreaker);
@@ -146,6 +149,7 @@ public class AdminMenuCommand implements CommandExecutor {
         adminMenu.setItem(17, fireElementKing);
         adminMenu.setItem(26, guardianOfColdLands);
         adminMenu.setItem(7, stick);
+        adminMenu.setItem(16, lastDrop);
 
         player.openInventory(adminMenu);
         return true;
