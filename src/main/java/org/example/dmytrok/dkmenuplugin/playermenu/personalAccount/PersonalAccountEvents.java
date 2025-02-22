@@ -63,7 +63,11 @@ public class PersonalAccountEvents implements Listener {
                 pickUpSettings.put(player.getUniqueId(), "disable");
                 player.performCommand("pickup disable");
             }
-
+        }
+        if (clickedItem.getType().equals(Material.CHEST)
+                && clickedItem.getItemMeta().getDisplayName().equals("§a§lLast Drop")) {
+            player.closeInventory();
+            player.performCommand("lastdrop");
         }
 
         event.setCancelled(true);

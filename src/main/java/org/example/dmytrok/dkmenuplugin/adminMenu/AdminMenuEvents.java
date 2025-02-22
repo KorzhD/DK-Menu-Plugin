@@ -87,13 +87,6 @@ public class AdminMenuEvents implements Listener {
             player.performCommand("bosskiller");
         }
 
-        if (clickedItem.getType().equals(Material.CHEST)
-                && clickedItem.getItemMeta().getDisplayName().equals("§a§lLast Drop")) {
-            player.closeInventory();
-            player.performCommand("lastdrop");
-        }
-
-
         event.setCancelled(true);
     }
 

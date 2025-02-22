@@ -97,11 +97,6 @@ public class AdminMenuCommand implements CommandExecutor {
         stickM.addEnchant(Enchantment.DAMAGE_ALL, 100, true);
         stick.setItemMeta(stickM);
 
-        ItemStack lastDrop = new ItemStack(Material.CHEST);
-        ItemMeta ldMeta = lastDrop.getItemMeta();
-        ldMeta.setDisplayName("§a§lLast Drop");
-        lastDrop.setItemMeta(ldMeta);
-
         //Entity
 
         //
@@ -114,7 +109,6 @@ public class AdminMenuCommand implements CommandExecutor {
         adminMenu.setItem(17, fireElementKing);
         adminMenu.setItem(26, guardianOfColdLands);
         adminMenu.setItem(7, stick);
-        adminMenu.setItem(16, lastDrop);
 
         player.openInventory(adminMenu);
         return true;

@@ -40,6 +40,19 @@ public class PesonalAccountCommand implements CommandExecutor {
 
         //
 
+        // Entity
+
+        ItemStack lastDrop = new ItemStack(Material.CHEST);
+        ItemMeta ldMeta = lastDrop.getItemMeta();
+        ldMeta.setDisplayName("§a§lLast Drop");
+        lastDrop.setItemMeta(ldMeta);
+
+        // Entity
+
+        //
+
+        personalAccount.setItem(44, lastDrop);
+
         String setting = null;
 
         if (!(PersonalAccountEvents.getPickUpSetting(player) == null)) {
@@ -57,6 +70,8 @@ public class PesonalAccountCommand implements CommandExecutor {
         } else if (setting.equals("enable")) {
             personalAccount.setItem(36, pickUpOn);
         }
+
+
 
         player.openInventory(personalAccount);
         return true;
