@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AdminMenuCommand implements CommandExecutor {
@@ -25,12 +26,12 @@ public class AdminMenuCommand implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
-        if(!(player.hasPermission("adminMenu.admin"))) {
+        if (!(player.hasPermission("adminMenu.admin"))) {
             commandSender.sendMessage("You must be an admin");
             return false;
         }
 
-        Inventory adminMenu = Bukkit.createInventory(player, getRows(5),  "§l§5Admin Menu");
+        Inventory adminMenu = Bukkit.createInventory(player, getRows(5), "§l§5Admin Menu");
 
         //Graves
 
@@ -38,19 +39,19 @@ public class AdminMenuCommand implements CommandExecutor {
         ItemMeta graveBreakerMeta = graveBreaker.getItemMeta();
         List<String> gblist = new ArrayList<>();
         gblist.add("§4Nightmare of Graveyards....");
-            graveBreakerMeta.setDisplayName("§c§lGet Grave Breaker");
-            graveBreakerMeta.setLore(gblist);
-            graveBreakerMeta.setUnbreakable(true);
-            graveBreaker.setItemMeta(graveBreakerMeta);
+        graveBreakerMeta.setDisplayName("§c§lGet Grave Breaker");
+        graveBreakerMeta.setLore(gblist);
+        graveBreakerMeta.setUnbreakable(true);
+        graveBreaker.setItemMeta(graveBreakerMeta);
 
         ItemStack superKey = new ItemStack(Material.TOTEM, 1);
         ItemMeta itemMeta = superKey.getItemMeta();
         List<String> sklist = new ArrayList<>();
         sklist.add("§5Can open any grave");
-            itemMeta.setDisplayName("§5Get Super Key");
-            itemMeta.setLore(sklist);
-            itemMeta.setUnbreakable(true);
-            superKey.setItemMeta(itemMeta);
+        itemMeta.setDisplayName("§5Get Super Key");
+        itemMeta.setLore(sklist);
+        itemMeta.setUnbreakable(true);
+        superKey.setItemMeta(itemMeta);
 
 
         //Graves
@@ -81,27 +82,70 @@ public class AdminMenuCommand implements CommandExecutor {
         pickUpOff.setItemMeta(pickUpOffMeta);
 
         ItemStack pickUpOn = new ItemStack(Material.INK_SACK, 1, (short) 10);
-        ItemMeta pickUpOnMeta = pickUpOff.getItemMeta();
-        pickUpOnMeta.setDisplayName("§aDisable Pick Up Messages");
+        ItemMeta pickUpOnMeta = pickUpOn.getItemMeta();
+        pickUpOnMeta.setDisplayName("§cDisable Pick Up Messages");
         pickUpOn.setItemMeta(pickUpOnMeta);
 
         //Pick Up
 
         //
 
+        //Entity
+
+        ItemStack monarch = new ItemStack(Material.MONSTER_EGG, 1, (short) 58);
+        ItemMeta monarchMeta = monarch.getItemMeta();
+        monarchMeta.setDisplayName("§5§lSummon Monarch");
+        monarch.setItemMeta(monarchMeta);
+
+        ItemStack fireElementKing = new ItemStack(Material.MONSTER_EGG, 1, (short) 61);
+        ItemMeta fekMeta = fireElementKing.getItemMeta();
+        fekMeta.setDisplayName("§c§lSummon Fire Element King");
+        fireElementKing.setItemMeta(fekMeta);
+
+        ItemStack guardianOfColdLands = new ItemStack(Material.MONSTER_EGG, 1, (short) 102);
+        ItemMeta goclMeta = guardianOfColdLands.getItemMeta();
+        goclMeta.setDisplayName("§b§lSummon Guardian of Cold Lands");
+        guardianOfColdLands.setItemMeta(goclMeta);
+
+
+        ItemStack stick = new ItemStack(Material.STICK);
+        ItemMeta stickM = stick.getItemMeta();
+        stickM.setDisplayName("§lGet Boss Killer");
+        stickM.addEnchant(Enchantment.DAMAGE_ALL, 100, true);
+        stick.setItemMeta(stickM);
+
+        //Entity
+
+        //
+
 
 
         adminMenu.setItem(0, graveBreaker);
-        adminMenu.setItem(8, superKey);
+        adminMenu.setItem(9, superKey);
         adminMenu.setItem(1, magicWand);
 
-        String pickUpSetting = AdminMenuEvents.pickUpSetting;
-        if (pickUpSetting.equals("disable")) {
+        String setting = null;
+
+        if (!(AdminMenuEvents.getPickUpSetting(player) == null)) {
+            setting = AdminMenuEvents.getPickUpSetting(player);
+            if (setting.equals("disable")) {
+                adminMenu.setItem(36, pickUpOff);
+            } else if (setting.equals("enable")) {
+                adminMenu.setItem(36, pickUpOn);
+            }
+        } else {
+            setting = "disable";
+        }
+        if (setting.equals("disable")) {
             adminMenu.setItem(36, pickUpOff);
-        } else if (pickUpSetting.equals("enable")) {
+        } else if (setting.equals("enable")) {
             adminMenu.setItem(36, pickUpOn);
         }
 
+        adminMenu.setItem(8, monarch);
+        adminMenu.setItem(17, fireElementKing);
+        adminMenu.setItem(26, guardianOfColdLands);
+        adminMenu.setItem(7, stick);
 
         player.openInventory(adminMenu);
         return true;
