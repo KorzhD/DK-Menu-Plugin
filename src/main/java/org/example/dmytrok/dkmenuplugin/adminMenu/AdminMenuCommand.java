@@ -74,22 +74,6 @@ public class AdminMenuCommand implements CommandExecutor {
 
         //
 
-        //Pick Up
-
-        ItemStack pickUpOff = new ItemStack(Material.INK_SACK, 1, (short) 1);
-        ItemMeta pickUpOffMeta = pickUpOff.getItemMeta();
-        pickUpOffMeta.setDisplayName("§aEnable Pick Up Messages");
-        pickUpOff.setItemMeta(pickUpOffMeta);
-
-        ItemStack pickUpOn = new ItemStack(Material.INK_SACK, 1, (short) 10);
-        ItemMeta pickUpOnMeta = pickUpOn.getItemMeta();
-        pickUpOnMeta.setDisplayName("§cDisable Pick Up Messages");
-        pickUpOn.setItemMeta(pickUpOnMeta);
-
-        //Pick Up
-
-        //
-
         //Entity
 
         ItemStack monarch = new ItemStack(Material.MONSTER_EGG, 1, (short) 58);
@@ -126,25 +110,6 @@ public class AdminMenuCommand implements CommandExecutor {
         adminMenu.setItem(0, graveBreaker);
         adminMenu.setItem(9, superKey);
         adminMenu.setItem(1, magicWand);
-
-        String setting = null;
-
-        if (!(AdminMenuEvents.getPickUpSetting(player) == null)) {
-            setting = AdminMenuEvents.getPickUpSetting(player);
-            if (setting.equals("disable")) {
-                adminMenu.setItem(36, pickUpOff);
-            } else if (setting.equals("enable")) {
-                adminMenu.setItem(36, pickUpOn);
-            }
-        } else {
-            setting = "disable";
-        }
-        if (setting.equals("disable")) {
-            adminMenu.setItem(36, pickUpOff);
-        } else if (setting.equals("enable")) {
-            adminMenu.setItem(36, pickUpOn);
-        }
-
         adminMenu.setItem(8, monarch);
         adminMenu.setItem(17, fireElementKing);
         adminMenu.setItem(26, guardianOfColdLands);

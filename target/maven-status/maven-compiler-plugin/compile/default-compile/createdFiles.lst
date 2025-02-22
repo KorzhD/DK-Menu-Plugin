@@ -1,3 +1,7 @@
-org\example\dmytrok\dkmenuplugin\adminMenu\AdminMenuEvents.class
+org\example\dmytrok\dkmenuplugin\playermenu\personalAccount\PersonalAccountEvents.class
+org\example\dmytrok\dkmenuplugin\playermenu\PlayerMenuCommand.class
 org\example\dmytrok\dkmenuplugin\DK_Menu_Plugin.class
+org\example\dmytrok\dkmenuplugin\adminMenu\AdminMenuEvents.class
+org\example\dmytrok\dkmenuplugin\playermenu\personalAccount\PesonalAccountCommand.class
+org\example\dmytrok\dkmenuplugin\playermenu\PlayerMenuEvents.class
 org\example\dmytrok\dkmenuplugin\adminMenu\AdminMenuCommand.class

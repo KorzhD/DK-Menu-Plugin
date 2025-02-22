@@ -6,7 +6,19 @@ commands:
     description: Admin Menu
     usage: /adminMenu
     permission: adminMenu.admin
+  menu:
+    description: Menu
+    usage: /menu
+    permission: menu.user
+  personalAccount:
+    description: Personal Account
+    usage: personalaccount
+    permission: personalaccount.user
 permissions:
   adminMenu.admin:
     description: Only admin can open this menu
     default: op
+  menu.user:
+    description: Menu
+  personalAccount.user:
+    description: Personal Account
