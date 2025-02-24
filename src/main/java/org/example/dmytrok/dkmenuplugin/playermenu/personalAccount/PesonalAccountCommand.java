@@ -25,6 +25,7 @@ public class PesonalAccountCommand implements CommandExecutor {
         //
 
         // PickUp
+
         ItemStack pickUpOff = new ItemStack(Material.INK_SACK, 1, (short) 1);
         ItemMeta pickUpOffMeta = pickUpOff.getItemMeta();
         pickUpOffMeta.setDisplayName("§aEnable Pick Up Messages");
@@ -50,6 +51,22 @@ public class PesonalAccountCommand implements CommandExecutor {
 
         //
 
+        // Player Invisible
+
+        ItemStack playerInvOn = new ItemStack(Material.GLASS_BOTTLE);
+        ItemMeta playerInvOnMeta = playerInvOn.getItemMeta();
+        playerInvOnMeta.setDisplayName("§aDisable Players invisible");
+        playerInvOn.setItemMeta(playerInvOnMeta);
+
+        ItemStack playerInvOff = new ItemStack(Material.DRAGONS_BREATH);
+        ItemMeta playerInvOffMeta = playerInvOff.getItemMeta();
+        playerInvOffMeta.setDisplayName("§cEnable Players invisible");
+        playerInvOff.setItemMeta(playerInvOffMeta);
+
+        // Player Invisible
+
+        //
+
         personalAccount.setItem(44, lastDrop);
 
         String setting = null;
@@ -68,6 +85,24 @@ public class PesonalAccountCommand implements CommandExecutor {
             personalAccount.setItem(36, pickUpOff);
         } else if (setting.equals("enable")) {
             personalAccount.setItem(36, pickUpOn);
+        }
+
+        String playerInvSetting = null;
+
+        if (!(PersonalAccountEvents.getPlayerInvSetting(player) == null)) {
+            playerInvSetting = PersonalAccountEvents.getPlayerInvSetting(player);
+            if (playerInvSetting.equals("disable")) {;
+                personalAccount.setItem(37, playerInvOff);
+            } else if (playerInvSetting.equals("enable")) {
+                personalAccount.setItem(37, playerInvOn);
+            }
+        } else {
+            playerInvSetting = "disable";
+        }
+        if (playerInvSetting.equals("disable")) {
+            personalAccount.setItem(37, playerInvOff);
+        } else if (playerInvSetting.equals("enable")) {
+            personalAccount.setItem(37, playerInvOn);
         }
 
 

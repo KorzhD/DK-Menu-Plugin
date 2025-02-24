@@ -8,12 +8,14 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.example.dmytrok.dkmenuplugin.DK_Menu_Plugin;
 
 import java.util.HashMap;
 import java.util.UUID;
 
 public class PersonalAccountEvents implements Listener {
     public static HashMap<UUID, String> pickUpSettings = new HashMap<>();
+    public static HashMap<UUID, String> playerInvSettings = new HashMap<>();
 
     @EventHandler
     public void onPlayerTakesFromPlayerAccount(InventoryClickEvent event) {
@@ -64,6 +66,24 @@ public class PersonalAccountEvents implements Listener {
                 player.performCommand("pickup disable");
             }
         }
+        if (clickedItem.getType().equals(Material.GLASS_BOTTLE)) {
+            player.closeInventory();
+            playerInvSettings.put(player.getUniqueId(), "disable");
+            player.sendMessage("§cYou disable players invisible");
+            for(Player playerOnServer : player.getWorld().getPlayers()) {
+                player.showPlayer(DK_Menu_Plugin.getInstance(), playerOnServer);
+            }
+        }
+
+        if (clickedItem.getType().equals(Material.DRAGONS_BREATH)) {
+            player.closeInventory();
+            playerInvSettings.put(player.getUniqueId(), "enable");
+            player.sendMessage("§aYou enable players invisible");
+            for(Player playerOnServer : player.getWorld().getPlayers()) {
+                player.hidePlayer(DK_Menu_Plugin.getInstance(), playerOnServer);
+            }
+        }
+
         if (clickedItem.getType().equals(Material.CHEST)
                 && clickedItem.getItemMeta().getDisplayName().equals("§a§lLast Drop")) {
             player.closeInventory();
@@ -77,10 +97,14 @@ public class PersonalAccountEvents implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         pickUpSettings.put(player.getUniqueId(), "disable");
+        playerInvSettings.put(player.getUniqueId(), "disable");
     }
 
     public static String getPickUpSetting(Player player) {
         return pickUpSettings.get(player.getUniqueId());
+    }
+    public static String getPlayerInvSetting(Player player) {
+        return playerInvSettings.get(player.getUniqueId());
     }
 
     private boolean isPlayerAccount(Inventory inventory) {

@@ -52,11 +52,6 @@ public class AdminMenuEvents implements Listener {
             player.performCommand("getsuperkey");
         }
 
-        if (clickedItem.getType().equals(Material.WOOD_AXE)
-                && clickedItem.getItemMeta().getDisplayName().equals("§5§lGet Magic Wand")) {
-            player.performCommand("getmagicwand");
-        }
-
         if (clickedItem.getType().equals(Material.MONSTER_EGG)) {
             ItemStack monarch = new ItemStack(Material.MONSTER_EGG, 1, (short) 58);
             ItemStack fireElementKing = new ItemStack(Material.MONSTER_EGG, 1, (short) 61);

@@ -44,10 +44,16 @@ public class PlayerMenuEvents implements Listener {
 
         if (clickedItem.getType().equals(Material.SKULL_ITEM)
                 && clickedItem.getItemMeta().getDisplayName().equals("§6Personal Account")) {
+            event.setCancelled(true);
             player.closeInventory();
             player.performCommand("personalAccount");
         }
-        event.setCancelled(true);
+        if (clickedItem.getType().equals(Material.RED_SHULKER_BOX)
+                && clickedItem.getItemMeta().getDisplayName().equals("§3Backpack")) {
+            event.setCancelled(true);
+            player.closeInventory();
+            player.performCommand("backpack");
+        }
     }
 
     private boolean isMenu(Inventory inventory) {

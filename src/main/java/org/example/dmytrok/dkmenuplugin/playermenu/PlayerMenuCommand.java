@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class PlayerMenuCommand implements CommandExecutor {
@@ -39,7 +40,16 @@ public class PlayerMenuCommand implements CommandExecutor {
 
         //
 
+        // Backpack
 
+        ItemStack backpack = new ItemStack(Material.RED_SHULKER_BOX);
+        ItemMeta backpackMeta = backpack.getItemMeta();
+        backpackMeta.setDisplayName("§3Backpack");
+        backpack.setItemMeta(backpackMeta);
+
+        // Backpack
+
+        menu.setItem(17, backpack);
         menu.setItem(8, playerCabinet);
         player.openInventory(menu);
         return true;

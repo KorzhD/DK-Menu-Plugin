@@ -14,6 +14,10 @@ commands:
     description: Personal Account
     usage: personalaccount
     permission: personalaccount.user
+  backpack:
+    description: Backpack
+    usage: backpack
+    permission: backpack.user
 permissions:
   adminMenu.admin:
     description: Only admin can open this menu
@@ -22,3 +26,5 @@ permissions:
     description: Menu
   personalAccount.user:
     description: Personal Account
+  backpack.user:
+    description: backpack

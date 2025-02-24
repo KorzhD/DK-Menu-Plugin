@@ -57,21 +57,6 @@ public class AdminMenuCommand implements CommandExecutor {
 
         //
 
-        //Magic Wand
-
-        ItemStack magicWand = new ItemStack(Material.WOOD_AXE, 1);
-        ItemMeta magicWandMeta = magicWand.getItemMeta();
-        List<String> mwlist = new ArrayList<>();
-        mwlist.add("§6The most powerful thing in the World!");
-        magicWandMeta.setDisplayName("§5§lGet Magic Wand");
-        magicWandMeta.setLore(mwlist);
-        magicWandMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, true);
-        magicWandMeta.setUnbreakable(true);
-        magicWand.setItemMeta(magicWandMeta);
-
-        //Magic Wand
-
-        //
 
         //Entity
 
@@ -103,7 +88,6 @@ public class AdminMenuCommand implements CommandExecutor {
 
         adminMenu.setItem(0, graveBreaker);
         adminMenu.setItem(9, superKey);
-        adminMenu.setItem(1, magicWand);
         adminMenu.setItem(8, monarch);
         adminMenu.setItem(17, fireElementKing);
         adminMenu.setItem(26, guardianOfColdLands);
