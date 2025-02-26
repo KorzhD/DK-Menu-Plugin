@@ -1,5 +1,8 @@
+org\example\dmytrok\dkmenuplugin\playermenu\backpack\BackpackEvents.class
 org\example\dmytrok\dkmenuplugin\DK_Menu_Plugin.class
+org\example\dmytrok\dkmenuplugin\tradesystem\TradeEvent.class
 org\example\dmytrok\dkmenuplugin\adminMenu\AdminMenuEvents.class
+org\example\dmytrok\dkmenuplugin\tradesystem\TradeCommand.class
 org\example\dmytrok\dkmenuplugin\playermenu\backpack\BackpackCommand$1.class
 org\example\dmytrok\dkmenuplugin\playermenu\backpack\BackpackCommand.class
 org\example\dmytrok\dkmenuplugin\playermenu\personalAccount\PersonalAccountEvents.class

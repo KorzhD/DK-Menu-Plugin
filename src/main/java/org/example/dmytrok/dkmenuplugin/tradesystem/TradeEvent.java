@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkmenuplugin.playermenu;
+package org.example.dmytrok.dkmenuplugin.tradesystem;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,12 +8,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-
-public class PlayerMenuEvents implements Listener {
+public class TradeEvent implements Listener {
 
     @EventHandler
     public void onPlayerTakesFromMenu(InventoryClickEvent event) {
-        if (!(isMenu(event.getInventory()))) {
+        if (!(isTradeMenu(event.getInventory()))) {
             return;
         }
         Inventory inventory = event.getInventory();
@@ -42,28 +41,16 @@ public class PlayerMenuEvents implements Listener {
             return;
         }
 
-        if (clickedItem.getType().equals(Material.SKULL_ITEM)
-                && clickedItem.getItemMeta().getDisplayName().equals("§6Personal Account")) {
+        if (clickedItem.getType().equals(Material.SKULL_ITEM)) {
             event.setCancelled(true);
             player.closeInventory();
-            player.performCommand("personalAccount");
+            String playerName = clickedItem.getItemMeta().getDisplayName().substring(2);
+            player.performCommand("trade " + playerName);
         }
-        if (clickedItem.getType().equals(Material.RED_SHULKER_BOX)
-                && clickedItem.getItemMeta().getDisplayName().equals("§3Backpack")) {
-            event.setCancelled(true);
-            player.closeInventory();
-            player.performCommand("backpack");
-        }
-        if (clickedItem.getType().equals(Material.DOUBLE_PLANT)
-                && clickedItem.getItemMeta().getDisplayName().equals("§2Trade")) {
-            event.setCancelled(true);
-            player.closeInventory();
-            player.performCommand("trademenu");
-        }
-    }
 
-    private boolean isMenu(Inventory inventory) {
-        if (!(inventory.getTitle().equals("§l§bMenu"))) {
+    }
+    private boolean isTradeMenu(Inventory inventory) {
+        if (!(inventory.getTitle().equals("§2Select a player to Trade"))) {
             return false;
         }
         if (inventory.getSize() != 45) {
@@ -71,6 +58,5 @@ public class PlayerMenuEvents implements Listener {
         }
         return true;
     }
+
 }
-
-

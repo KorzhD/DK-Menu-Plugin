@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 public class PesonalAccountCommand implements CommandExecutor {
     @Override
@@ -67,6 +68,30 @@ public class PesonalAccountCommand implements CommandExecutor {
 
         //
 
+        // Personal Statistic
+
+        ItemStack playerStatistic = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta skullMeta = (SkullMeta) playerStatistic.getItemMeta();
+        skullMeta.setOwningPlayer(player);
+        skullMeta.setOwner(player.getName());
+        skullMeta.setDisplayName("§6" + player.getDisplayName() + "'s Statistic");
+        playerStatistic.setItemMeta(skullMeta);
+
+        // Personal Statistic
+
+        //
+
+        // Back Button
+
+        ItemStack backButton = new ItemStack(Material.PRISMARINE_SHARD);
+        ItemMeta backMeta = backButton.getItemMeta();
+        backMeta.setDisplayName("§c<- Back");
+        backButton.setItemMeta(backMeta);
+
+        // Back Button
+
+        //
+
         personalAccount.setItem(44, lastDrop);
 
         String setting = null;
@@ -105,6 +130,9 @@ public class PesonalAccountCommand implements CommandExecutor {
             personalAccount.setItem(37, playerInvOn);
         }
 
+
+        personalAccount.setItem(22, playerStatistic);
+        personalAccount.setItem(0, backButton);
 
 
         player.openInventory(personalAccount);

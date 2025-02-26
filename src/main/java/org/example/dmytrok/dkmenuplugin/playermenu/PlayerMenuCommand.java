@@ -32,7 +32,7 @@ public class PlayerMenuCommand implements CommandExecutor {
 
         ItemStack playerCabinet = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) playerCabinet.getItemMeta();
-        skullMeta.setOwner(player.getCustomName());
+        skullMeta.setOwningPlayer(player);
         skullMeta.setDisplayName("§6Personal Account");
         playerCabinet.setItemMeta(skullMeta);
 
@@ -49,6 +49,19 @@ public class PlayerMenuCommand implements CommandExecutor {
 
         // Backpack
 
+        //
+
+        // Trade
+        ItemStack trade = new ItemStack(Material.DOUBLE_PLANT);
+        ItemMeta tradeMeta = trade.getItemMeta();
+        tradeMeta.setDisplayName("§2Trade");
+        trade.setItemMeta(tradeMeta);
+
+        // Trade
+
+        //
+
+        menu.setItem(20, trade);
         menu.setItem(17, backpack);
         menu.setItem(8, playerCabinet);
         player.openInventory(menu);

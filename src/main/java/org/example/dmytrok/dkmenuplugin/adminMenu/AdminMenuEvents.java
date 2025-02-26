@@ -42,15 +42,6 @@ public class AdminMenuEvents implements Listener {
             return;
         }
 
-        if (clickedItem.getType().equals(Material.GOLD_AXE)
-                && clickedItem.getItemMeta().getDisplayName().equals("§c§lGet Grave Breaker")) {
-            player.performCommand("getgravebreaker");
-        }
-
-        if (clickedItem.getType().equals(Material.TOTEM)
-                && clickedItem.getItemMeta().getDisplayName().equals("§5Get Super Key")) {
-            player.performCommand("getsuperkey");
-        }
 
         if (clickedItem.getType().equals(Material.MONSTER_EGG)) {
             ItemStack monarch = new ItemStack(Material.MONSTER_EGG, 1, (short) 58);

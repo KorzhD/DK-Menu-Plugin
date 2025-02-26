@@ -32,32 +32,6 @@ public class AdminMenuCommand implements CommandExecutor {
 
         Inventory adminMenu = Bukkit.createInventory(player, getRows(5), "§l§5Admin Menu");
 
-        //Graves
-
-        ItemStack graveBreaker = new ItemStack(Material.GOLD_AXE);
-        ItemMeta graveBreakerMeta = graveBreaker.getItemMeta();
-        List<String> gblist = new ArrayList<>();
-        gblist.add("§4Nightmare of Graveyards....");
-        graveBreakerMeta.setDisplayName("§c§lGet Grave Breaker");
-        graveBreakerMeta.setLore(gblist);
-        graveBreakerMeta.setUnbreakable(true);
-        graveBreaker.setItemMeta(graveBreakerMeta);
-
-        ItemStack superKey = new ItemStack(Material.TOTEM, 1);
-        ItemMeta itemMeta = superKey.getItemMeta();
-        List<String> sklist = new ArrayList<>();
-        sklist.add("§5Can open any grave");
-        itemMeta.setDisplayName("§5Get Super Key");
-        itemMeta.setLore(sklist);
-        itemMeta.setUnbreakable(true);
-        superKey.setItemMeta(itemMeta);
-
-
-        //Graves
-
-        //
-
-
         //Entity
 
         ItemStack monarch = new ItemStack(Material.MONSTER_EGG, 1, (short) 58);
@@ -86,8 +60,6 @@ public class AdminMenuCommand implements CommandExecutor {
         //
 
 
-        adminMenu.setItem(0, graveBreaker);
-        adminMenu.setItem(9, superKey);
         adminMenu.setItem(8, monarch);
         adminMenu.setItem(17, fireElementKing);
         adminMenu.setItem(26, guardianOfColdLands);

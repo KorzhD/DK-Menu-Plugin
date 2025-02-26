@@ -90,6 +90,13 @@ public class PersonalAccountEvents implements Listener {
             player.performCommand("lastdrop");
         }
 
+        if(clickedItem.getType().equals(Material.PRISMARINE_SHARD)
+                && clickedItem.getItemMeta().getDisplayName().equals("§c<- Back")) {
+            player.closeInventory();
+            player.performCommand("menu");
+
+        }
+
         event.setCancelled(true);
     }
 

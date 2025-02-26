@@ -7,8 +7,10 @@ import org.example.dmytrok.dkmenuplugin.inventoryrules.TwoSwordsRule;
 import org.example.dmytrok.dkmenuplugin.playermenu.PlayerMenuCommand;
 import org.example.dmytrok.dkmenuplugin.playermenu.PlayerMenuEvents;
 import org.example.dmytrok.dkmenuplugin.playermenu.backpack.BackpackCommand;
+import org.example.dmytrok.dkmenuplugin.playermenu.backpack.BackpackEvents;
 import org.example.dmytrok.dkmenuplugin.playermenu.personalAccount.PersonalAccountEvents;
 import org.example.dmytrok.dkmenuplugin.playermenu.personalAccount.PesonalAccountCommand;
+import org.example.dmytrok.dkmenuplugin.tradesystem.*;
 
 public final class DK_Menu_Plugin extends JavaPlugin {
 
@@ -25,8 +27,11 @@ public final class DK_Menu_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerMenuEvents(), this);
         getServer().getPluginManager().registerEvents(new PersonalAccountEvents(), this);
 
+        getServer().getPluginManager().registerEvents(new BackpackEvents(), this);
         getServer().getPluginManager().registerEvents(new BackpackCommand(), this);
         getServer().getPluginManager().registerEvents(new TwoSwordsRule(), this);
+
+        getServer().getPluginManager().registerEvents(new TradeEvent(), this);
 
         if(getCommand("adminMenu") != null) {
             getCommand("adminMenu").setExecutor(new AdminMenuCommand());
@@ -45,6 +50,11 @@ public final class DK_Menu_Plugin extends JavaPlugin {
         }
         if(getCommand("backpack") != null) {
             getCommand("backpack").setExecutor(new BackpackCommand());
+        } else {
+            getLogger().info("Something WRONG");
+        }
+        if(getCommand("trademenu") != null) {
+            getCommand("trademenu").setExecutor(new TradeCommand());
         } else {
             getLogger().info("Something WRONG");
         }

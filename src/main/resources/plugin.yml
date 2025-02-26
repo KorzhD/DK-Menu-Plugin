@@ -18,13 +18,23 @@ commands:
     description: Backpack
     usage: backpack
     permission: backpack.user
+  trademenu:
+    description: Trade System
+    usage: trademenu
+    permission: trademenu.user
 permissions:
   adminMenu.admin:
     description: Only admin can open this menu
     default: op
   menu.user:
     description: Menu
+    default: not op
   personalAccount.user:
     description: Personal Account
+    default: not op
   backpack.user:
     description: backpack
+    default: not op
+  trademenu.user:
+    description: trademenu
+    default: not op
