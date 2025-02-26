@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class TradeCommand implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
-        Inventory playerListMenu = Bukkit.createInventory(null, 45, "§2Select a player to Trade");
+        Inventory playerListMenu = Bukkit.createInventory(null, 27, "§2Select a player to Trade");
 
         List<Player> onlinePlayers = new ArrayList<>(Bukkit.getOnlinePlayers());
         onlinePlayers.sort(Comparator.comparing(Player::getName));
@@ -38,9 +39,23 @@ public class TradeCommand implements CommandExecutor {
             SkullMeta playerHeadMeta = (SkullMeta) playerHead.getItemMeta();
             playerHeadMeta.setDisplayName("§3" + onlinePlayers.get(i).getName());
             playerHead.setItemMeta(playerHeadMeta);
-            playerListMenu.addItem(playerHead);
+            playerListMenu.setItem(i + 1, playerHead);
         }
 
+        //
+
+        // Back Button
+
+        ItemStack backButton = new ItemStack(Material.PRISMARINE_SHARD);
+        ItemMeta backMeta = backButton.getItemMeta();
+        backMeta.setDisplayName("§c<- Back");
+        backButton.setItemMeta(backMeta);
+
+        // Back Button
+
+        //
+
+        playerListMenu.setItem(0, backButton);
         player.openInventory(playerListMenu);
         return true;
     }

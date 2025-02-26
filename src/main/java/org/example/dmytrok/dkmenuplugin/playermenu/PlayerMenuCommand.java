@@ -61,9 +61,9 @@ public class PlayerMenuCommand implements CommandExecutor {
 
         //
 
-        menu.setItem(20, trade);
-        menu.setItem(17, backpack);
-        menu.setItem(8, playerCabinet);
+        menu.setItem(21, trade);
+        menu.setItem(22, backpack);
+        menu.setItem(23, playerCabinet);
         player.openInventory(menu);
         return true;
     }

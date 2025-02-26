@@ -47,13 +47,18 @@ public class TradeEvent implements Listener {
             String playerName = clickedItem.getItemMeta().getDisplayName().substring(2);
             player.performCommand("trade " + playerName);
         }
+        if(clickedItem.getType().equals(Material.PRISMARINE_SHARD)
+                && clickedItem.getItemMeta().getDisplayName().equals("§c<- Back")) {
+            player.closeInventory();
+            player.performCommand("menu");
+        }
 
     }
     private boolean isTradeMenu(Inventory inventory) {
         if (!(inventory.getTitle().equals("§2Select a player to Trade"))) {
             return false;
         }
-        if (inventory.getSize() != 45) {
+        if (inventory.getSize() != 27) {
             return false;
         }
         return true;

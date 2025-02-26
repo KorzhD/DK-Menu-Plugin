@@ -94,7 +94,6 @@ public class PersonalAccountEvents implements Listener {
                 && clickedItem.getItemMeta().getDisplayName().equals("§c<- Back")) {
             player.closeInventory();
             player.performCommand("menu");
-
         }
 
         event.setCancelled(true);

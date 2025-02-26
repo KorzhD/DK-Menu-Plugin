@@ -39,7 +39,7 @@ public class BackpackCommand implements CommandExecutor, Listener {
 
         Inventory backpack = null;
         if (playerBackpack.get(player) == null) {
-            backpack = Bukkit.createInventory(player, getRows(6), "§3Backpack");
+            backpack = Bukkit.createInventory(player, getRows(3), "§3Backpack");
         } else {
             backpack = playerBackpack.get(player);
         }
@@ -81,10 +81,10 @@ public class BackpackCommand implements CommandExecutor, Listener {
 
         //
 
-        backpack.setItem(0, glass);
+        backpack.setItem(0, backButton);
         backpack.setItem(1, glass);
         backpack.setItem(2, glass);
-        backpack.setItem(3, backButton);
+        backpack.setItem(3, glass);
         backpack.setItem(4, trash);
         backpack.setItem(5, glass);
         backpack.setItem(6, glass);
