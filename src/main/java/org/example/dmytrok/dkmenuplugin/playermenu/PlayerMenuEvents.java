@@ -48,7 +48,7 @@ public class PlayerMenuEvents implements Listener {
             player.closeInventory();
             player.performCommand("personalAccount");
         }
-        if (clickedItem.getType().equals(Material.RED_SHULKER_BOX)
+        if (clickedItem.getType().equals(Material.SHULKER_SHELL)
                 && clickedItem.getItemMeta().getDisplayName().equals("§3Backpack")) {
             event.setCancelled(true);
             player.closeInventory();

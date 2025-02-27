@@ -42,7 +42,7 @@ public class PlayerMenuCommand implements CommandExecutor {
 
         // Backpack
 
-        ItemStack backpack = new ItemStack(Material.RED_SHULKER_BOX);
+        ItemStack backpack = new ItemStack(Material.SHULKER_SHELL);
         ItemMeta backpackMeta = backpack.getItemMeta();
         backpackMeta.setDisplayName("§3Backpack");
         backpack.setItemMeta(backpackMeta);
@@ -62,8 +62,9 @@ public class PlayerMenuCommand implements CommandExecutor {
         //
 
         menu.setItem(21, trade);
-        menu.setItem(22, backpack);
-        menu.setItem(23, playerCabinet);
+        menu.setItem(22, playerCabinet);
+        menu.setItem(23, backpack);
+
         player.openInventory(menu);
         return true;
     }
